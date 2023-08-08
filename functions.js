@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 const sum = (num1, num2) => {
     return num1 + num2;
 }
@@ -9,7 +11,19 @@ const sub = (num2, num1) => {
     return num2 - num1;
 }
 
+const fetchTodo = async (id) => {
+    const result = await axios.get(`https://jsonplaceholder.typicode.com/todos/${id}`);
+    return result.data;
+}
+
+const fetchTodos = () => {
+    const results = axios.get('https://jsonplaceholder.typicode.com/todos');
+    return results.data;
+}
+
 module.exports = {
     sum,
-    sub
+    sub,
+    fetchTodo,
+    fetchTodos
 };
